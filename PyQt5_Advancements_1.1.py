@@ -11,6 +11,9 @@ class MainWindow(qtw.QWidget):
     def __init__(self):
         super().__init__()
 
+        #Add a Title for your Widget
+        self.setWindowTitle("Name Maker 10000")
+
 
 
 
