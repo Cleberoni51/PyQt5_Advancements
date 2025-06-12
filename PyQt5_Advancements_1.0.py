@@ -16,7 +16,7 @@ class MainWindow(qtw.QWidget):
             my_entry.setText("")
 
         #Add a Title for your Widget
-        self.setWindowTitle("Name Maker")
+        self.setWindowTitle("Name Maker 10000")
 
         #set Vertical Layout
         self.setLayout(qtw.QVBoxLayout())
