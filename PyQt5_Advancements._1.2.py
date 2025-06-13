@@ -92,10 +92,10 @@ class MainWindow(qtw.QWidget):
 
 def main():
     app = qtw.QApplication(sys.argv)
-    #ex = MainWindow()
+    ex = MainWindow()
     win = qtw.QWidget()
     grid = qtw.QGridLayout()
-    win.show()
+    ex.show()
     
     sys.exit(app.exec_())
 
