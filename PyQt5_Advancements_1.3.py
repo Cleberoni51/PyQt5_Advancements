@@ -24,84 +24,181 @@ class MainWindow(qtw.QWidget):
 
         #Add a Title for your Widget
         self.setWindowTitle("Caleb's Calculator")
-        
+        self.number = str("")
 
         #Put some code here
+        
+        self.LabelAnswer = qtw.QLabel(self)
+        self.LabelNumber = qtw.QLabel(self)
+        self.LabelOperation = qtw.QLabel(self)
 
-        self.b0 = qtw.QPushButton("Button0")
-        self.b1 = qtw.QPushButton("Button1")
-        self.b2 = qtw.QPushButton("Button2")
-        self.b3 = qtw.QPushButton("Button3")
-        self.b4 = qtw.QPushButton("Button4")
-        self.b5 = qtw.QPushButton("Button5")
-        self.b6 = qtw.QPushButton("Button6")
-        self.b7 = qtw.QPushButton("Button7")
-        self.b8 = qtw.QPushButton("Button8")
-        self.b9 = qtw.QPushButton("Button9")
-        self.b10 = qtw.QPushButton("Button10")
-        self.b11 = qtw.QPushButton("Button11")
-        self.b12 = qtw.QPushButton("Button12")
-        self.b13 = qtw.QPushButton("Button13")
-        self.b14 = qtw.QPushButton("Button14")
-        self.b15 = qtw.QPushButton("Button15")
-        self.b16 = qtw.QPushButton("Button16")
-        self.b17 = qtw.QPushButton("Button17")
-        self.b18 = qtw.QPushButton("Button18")
-        self.b19 = qtw.QPushButton("Button19")
+        box = qtw.QVBoxLayout()
+        box0 = qtw.QHBoxLayout()
+        box1 = qtw.QHBoxLayout()
+        box1p1 = qtw.QVBoxLayout()
+        box1p1p1 = qtw.QHBoxLayout()
+        box1p1p2 = qtw.QHBoxLayout()
+        box1p1p3 = qtw.QHBoxLayout()
+        box1p1p4 = qtw.QHBoxLayout()
+        box1p2 = qtw.QVBoxLayout()
+
+        self.Seven = qtw.QPushButton("7", clicked = lambda:PushSeven())
+
+        def PushSeven() :
+            self.number = str(self.number+"7")
+            self.LabelAnswer.setText(f"{self.number}")
+            return self.number
+        
+        self.Eight = qtw.QPushButton("8", clicked = lambda:PushEight())
+
+        def PushEight() :
+            self.number = str(self.number+"8")
+            self.LabelAnswer.setText(f"{self.number}")
+            return self.number
+        
+        self.Nine = qtw.QPushButton("9", clicked = lambda:PushNine())
+        
+        def PushNine() :
+            self.number = str(self.number+"9")
+            self.LabelAnswer.setText(f"{self.number}")
+            return self.number
+        
+        self.Four = qtw.QPushButton("4", clicked = lambda:PushFour())
+        
+        def PushFour() :
+            self.number = str(self.number+"4")
+            self.LabelAnswer.setText(f"{self.number}")
+            return self.number
+        
+        self.Five = qtw.QPushButton("5", clicked = lambda:PushFive())
+        
+        def PushFive() :
+            self.number = str(self.number+"5")
+            self.LabelAnswer.setText(f"{self.number}")
+            return self.number
+        
+        self.Six = qtw.QPushButton("6", clicked = lambda:PushSix())
+        
+        def PushSix() :
+            self.number = str(self.number+"6")
+            self.LabelAnswer.setText(f"{self.number}")
+            return self.number
+        
+        self.One = qtw.QPushButton("1", clicked = lambda:PushOne())
+        
+        def PushOne() :
+            self.number = str(self.number+"1")
+            self.LabelAnswer.setText(f"{self.number}")
+            return self.number
+        
+        self.Two = qtw.QPushButton("2", clicked = lambda:PushTwo())
+        
+        def PushTwo() :
+            self.number = str(self.number+"2")
+            self.LabelAnswer.setText(f"{self.number}")
+            return self.number
+        
+        self.Three = qtw.QPushButton("3", clicked = lambda:PushThree())
+        
+        def PushThree() :
+            self.number = str(self.number+"3")
+            self.LabelAnswer.setText(f"{self.number}")
+            return self.number
+        
+        self.Decimal = qtw.QPushButton(".", clicked = lambda:PushDecimal())
+        
+        def PushDecimal() :
+            self.number = str(self.number+".")
+            self.LabelAnswer.setText(f"{self.number}")
+            return self.number
+        
+        self.Zero = qtw.QPushButton("0", clicked = lambda:PushZero())
+        
+        def PushZero() :
+            self.number = str(self.number+"0")
+            self.LabelAnswer.setText(f"{self.number}") 
+            return self.number
+        
+        self.Negate = qtw.QPushButton("(-)", clicked = lambda:PushNegate())
+        self.a = False
+        def PushNegate() :
+            if self.a == False :
+                self.number = str("-"+self.number)
+                self.LabelAnswer.setText(f"{self.number}")
+                self.a = True
+            else :
+                self.number = str(self.number.replace("-", ""))
+                self.LabelAnswer.setText(f"{self.number}")
+                self.a = False
+            return self.number
+        
+        self.Divide = qtw.QPushButton("%")#, clicked = lambda:PushDivide())
+        self.Multiply = qtw.QPushButton("x")#, clicked = lambda:PushMultiply())
+        self.Minus = qtw.QPushButton("-")#, clicked = lambda:PushMinus())
+        self.Plus = qtw.QPushButton("+")#, clicked = lambda:PushPlus())
+        self.Equal = qtw.QPushButton("=", clicked = lambda:PushEqual())
+
+        def PushEqual() :
+            self.LabelAnswer.setText(f"{self.number}")
 
 
-        hbox1 = qtw.QHBoxLayout()
-        hbox2 = qtw.QHBoxLayout()
-        hbox3 = qtw.QHBoxLayout()
-        hbox4 = qtw.QHBoxLayout()
-        vbox = qtw.QVBoxLayout()
+        box0.addWidget(self.LabelAnswer)
+        self.LabelAnswer.setText("0.0")
+        #self.LabelAnswer.setText("Hello Answer")
+        self.LabelAnswer.setStyleSheet("background-color: lightgreen")
 
-        hbox1.addWidget(self.b1)
-        hbox1.addStretch()
-        hbox1.addWidget(self.b2)
-        hbox1.addStretch()
-        hbox1.addWidget(self.b3)
-        hbox1.addStretch()
-        hbox1.addWidget(self.b4)
+        #box1p1.addWidget(self.LabelNumber)
+        #self.LabelNumber.setText("Hello Number")
+        #self.LabelNumber.setStyleSheet("background-color: orange")
+        box1p1p1.addWidget(self.Seven)
+        box1p1p1.addStretch()
+        box1p1p1.addWidget(self.Eight)
+        box1p1p1.addStretch()
+        box1p1p1.addWidget(self.Nine)
+        #box1p1p1.addStretch()
+        box1p1p2.addWidget(self.Four)
+        box1p1p2.addStretch()
+        box1p1p2.addWidget(self.Five)
+        box1p1p2.addStretch()
+        box1p1p2.addWidget(self.Six)
+        #box1p1p2.addStretch()
+        box1p1p3.addWidget(self.One)
+        box1p1p3.addStretch()
+        box1p1p3.addWidget(self.Two)
+        box1p1p3.addStretch()
+        box1p1p3.addWidget(self.Three)
+        #box1p1p3.addStretch()
+        box1p1p4.addWidget(self.Decimal)
+        box1p1p4.addStretch()
+        box1p1p4.addWidget(self.Zero)
+        box1p1p4.addStretch()
+        box1p1p4.addWidget(self.Negate)
 
-        vbox.addStretch()
+        #box1p2.addWidget(self.LabelOperation)
+        #self.LabelOperation.setText("Hello Operation")
+        #self.LabelOperation.setStyleSheet("background-color: red")
 
-        hbox2.addWidget(self.b5)
-        hbox2.addStretch()
-        hbox2.addWidget(self.b6)
-        hbox2.addStretch()
-        hbox2.addWidget(self.b7)
-        hbox2.addStretch()
-        hbox2.addWidget(self.b8)
+        box1p2.addWidget(self.Divide)
+        box1p2.addWidget(self.Multiply)
+        box1p2.addWidget(self.Minus)
+        box1p2.addWidget(self.Plus)
+        box1p2.addWidget(self.Equal)
 
-        vbox.addStretch()
+        #hbox4.addStretch()
 
-        hbox3.addWidget(self.b9)
-        hbox3.addStretch()
-        hbox3.addWidget(self.b10)
-        hbox3.addStretch()
-        hbox3.addWidget(self.b11)
-        hbox3.addStretch()
-        hbox3.addWidget(self.b12)
 
-        vbox.addStretch()
-
-        hbox4.addWidget(self.b13)
-        hbox4.addStretch()
-        hbox4.addWidget(self.b14)
-        hbox4.addStretch()
-        hbox4.addWidget(self.b15)
-        hbox4.addStretch()
-        hbox4.addWidget(self.b16)
-
-        vbox.addStretch()
+        #vbox.addStretch()
         
         #hbox.
-        vbox.addLayout(hbox1)
-        vbox.addLayout(hbox2)
-        vbox.addLayout(hbox3)
-        vbox.addLayout(hbox4)
-        self.setLayout(vbox)
+        box.addLayout(box0)
+        box.addLayout(box1)
+        box1.addLayout(box1p1)
+        box1.addLayout(box1p2)
+        box1p1.addLayout(box1p1p1)
+        box1p1.addLayout(box1p1p2)
+        box1p1.addLayout(box1p1p3)
+        box1p1.addLayout(box1p1p4)
+        self.setLayout(box)
         #Yep right there
 
 
