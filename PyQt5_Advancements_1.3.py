@@ -25,7 +25,6 @@ class MainWindow(qtw.QWidget):
         #Add a Title for your Widget
         self.setWindowTitle("Caleb's Calculator")
         self.number = str("")
-
         #Put some code here
         
         self.LabelAnswer = qtw.QLabel(self)
@@ -135,6 +134,10 @@ class MainWindow(qtw.QWidget):
         self.Divide = qtw.QPushButton("/", clicked = lambda:PushDivide())
 
         def PushDivide() :
+            self.number = str(self.number.replace(" x ", ""))
+            self.number = str(self.number.replace(" + ", ""))
+            self.number = str(self.number.replace(" / ", ""))
+            self.number = str(self.number.replace(" - ", ""))
             self.number = str(self.number+" / ")
             self.LabelAnswer.setText(f"{self.number}") 
             return self.number
@@ -142,6 +145,10 @@ class MainWindow(qtw.QWidget):
         self.Multiply = qtw.QPushButton("x", clicked = lambda:PushMultiply())
 
         def PushMultiply() :
+            self.number = str(self.number.replace(" / ", ""))
+            self.number = str(self.number.replace(" + ", ""))
+            self.number = str(self.number.replace(" - ", ""))
+            self.number = str(self.number.replace(" x ", ""))
             self.number = str(self.number+" x ")
             self.LabelAnswer.setText(f"{self.number}") 
             return self.number
@@ -149,6 +156,10 @@ class MainWindow(qtw.QWidget):
         self.Minus = qtw.QPushButton("-", clicked = lambda:PushMinus())
 
         def PushMinus() :
+            self.number = str(self.number.replace(" x ", ""))
+            self.number = str(self.number.replace(" + ", ""))
+            self.number = str(self.number.replace(" / ", ""))
+            self.number = str(self.number.replace(" - ", ""))
             self.number = str(self.number+" - ")
             self.LabelAnswer.setText(f"{self.number}") 
             return self.number
@@ -156,6 +167,10 @@ class MainWindow(qtw.QWidget):
         self.Plus = qtw.QPushButton("+", clicked = lambda:PushPlus())
 
         def PushPlus() :
+            self.number = str(self.number.replace(" x ", ""))
+            self.number = str(self.number.replace(" / ", ""))
+            self.number = str(self.number.replace(" - ", ""))
+            self.number = str(self.number.replace(" + ", ""))
             self.number = str(self.number+" + ")
             self.LabelAnswer.setText(f"{self.number}") 
             return self.number
@@ -165,11 +180,17 @@ class MainWindow(qtw.QWidget):
         def PushEqual() :
             self.LabelAnswer.setText(f"{self.number}")
 
+        self.Clear = qtw.QPushButton("clr", clicked = lambda:PushClear())
+
+        def PushClear() :
+            self.number = ""
+            self.LabelAnswer.setText("0.0")
+            return self.number
 
         box0.addWidget(self.LabelAnswer)
-        self.LabelAnswer.setText("0.0")
+        self.LabelAnswer.setText("0")
         #self.LabelAnswer.setText("Hello Answer")
-        self.LabelAnswer.setStyleSheet("background-color: lightgreen")
+        self.LabelAnswer.setStyleSheet("text-align:right;")
 
         #box1p1.addWidget(self.LabelNumber)
         #self.LabelNumber.setText("Hello Number")
@@ -207,6 +228,7 @@ class MainWindow(qtw.QWidget):
         box1p2.addWidget(self.Minus)
         box1p2.addWidget(self.Plus)
         box1p2.addWidget(self.Equal)
+        box1p2.addWidget(self.Clear)
 
         #hbox4.addStretch()
 
