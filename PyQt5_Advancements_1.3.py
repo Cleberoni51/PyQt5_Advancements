@@ -132,10 +132,34 @@ class MainWindow(qtw.QWidget):
                 self.a = False
             return self.number
         
-        self.Divide = qtw.QPushButton("%")#, clicked = lambda:PushDivide())
-        self.Multiply = qtw.QPushButton("x")#, clicked = lambda:PushMultiply())
-        self.Minus = qtw.QPushButton("-")#, clicked = lambda:PushMinus())
-        self.Plus = qtw.QPushButton("+")#, clicked = lambda:PushPlus())
+        self.Divide = qtw.QPushButton("/", clicked = lambda:PushDivide())
+
+        def PushDivide() :
+            self.number = str(self.number+" / ")
+            self.LabelAnswer.setText(f"{self.number}") 
+            return self.number
+
+        self.Multiply = qtw.QPushButton("x", clicked = lambda:PushMultiply())
+
+        def PushMultiply() :
+            self.number = str(self.number+" x ")
+            self.LabelAnswer.setText(f"{self.number}") 
+            return self.number
+
+        self.Minus = qtw.QPushButton("-", clicked = lambda:PushMinus())
+
+        def PushMinus() :
+            self.number = str(self.number+" - ")
+            self.LabelAnswer.setText(f"{self.number}") 
+            return self.number
+
+        self.Plus = qtw.QPushButton("+", clicked = lambda:PushPlus())
+
+        def PushPlus() :
+            self.number = str(self.number+" + ")
+            self.LabelAnswer.setText(f"{self.number}") 
+            return self.number
+
         self.Equal = qtw.QPushButton("=", clicked = lambda:PushEqual())
 
         def PushEqual() :
