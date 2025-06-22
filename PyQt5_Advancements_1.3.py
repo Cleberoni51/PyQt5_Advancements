@@ -25,6 +25,7 @@ class MainWindow(qtw.QWidget):
         #Add a Title for your Widget
         self.setWindowTitle("Caleb's Calculator")
         self.number = str("")
+        self.A = 0
         #Put some code here
         
         self.LabelAnswer = qtw.QLabel(self)
@@ -107,12 +108,17 @@ class MainWindow(qtw.QWidget):
         self.Decimal = qtw.QPushButton(".", clicked = lambda:PushDecimal())
         
         def PushDecimal() :
-            self.number = str(self.number+".")
-            self.LabelAnswer.setText(f"{self.number}")
+            if self.a == False :
+                self.number = str(self.number+".")
+                self.LabelAnswer.setText(f"{self.number}")
+                self.a = True
+            else :
+                self.number = str(self.number.replace(".", "."))
+                self.LabelAnswer.setText(f"{self.number}")
+                self.a = False
             return self.number
         
         self.Zero = qtw.QPushButton("0", clicked = lambda:PushZero())
-        
         def PushZero() :
             self.number = str(self.number+"0")
             self.LabelAnswer.setText(f"{self.number}") 
@@ -139,8 +145,10 @@ class MainWindow(qtw.QWidget):
             self.number = str(self.number.replace(" / ", ""))
             self.number = str(self.number.replace(" - ", ""))
             self.number = str(self.number+" / ")
-            self.LabelAnswer.setText(f"{self.number}") 
-            return self.number
+            self.LabelAnswer.setText(f"{self.number}")
+            A = str(self.number.replace(" / ", ""))
+            print(A)
+            return self.number,self.A
 
         self.Multiply = qtw.QPushButton("x", clicked = lambda:PushMultiply())
 
@@ -151,7 +159,9 @@ class MainWindow(qtw.QWidget):
             self.number = str(self.number.replace(" x ", ""))
             self.number = str(self.number+" x ")
             self.LabelAnswer.setText(f"{self.number}") 
-            return self.number
+            A = str(self.number.replace(" x ", ""))
+            print(A)
+            return self.number, self.A
 
         self.Minus = qtw.QPushButton("-", clicked = lambda:PushMinus())
 
@@ -161,8 +171,10 @@ class MainWindow(qtw.QWidget):
             self.number = str(self.number.replace(" / ", ""))
             self.number = str(self.number.replace(" - ", ""))
             self.number = str(self.number+" - ")
-            self.LabelAnswer.setText(f"{self.number}") 
-            return self.number
+            self.LabelAnswer.setText(f"{self.number}")
+            A = str(self.number.replace(" - ", ""))
+            print(A)
+            return self.number, self.A
 
         self.Plus = qtw.QPushButton("+", clicked = lambda:PushPlus())
 
@@ -172,13 +184,23 @@ class MainWindow(qtw.QWidget):
             self.number = str(self.number.replace(" - ", ""))
             self.number = str(self.number.replace(" + ", ""))
             self.number = str(self.number+" + ")
-            self.LabelAnswer.setText(f"{self.number}") 
-            return self.number
+            self.LabelAnswer.setText(f"{self.number}")
+            if self.number.count(" + ") == 0:
+                print(self.number.count(" + "))
+                self.number
+                self.A = str(self.number.replace(" + ", ""))
+                print(int(self.A))
+            elif self.number.count(" + ") == 1:
+                print(self.number)
+                self.B = self.number.replace(str(self.A), "")
+                
+            return self.number, self.A
 
         self.Equal = qtw.QPushButton("=", clicked = lambda:PushEqual())
 
         def PushEqual() :
             self.LabelAnswer.setText(f"{self.number}")
+            print(self.number)
 
         self.Clear = qtw.QPushButton("clr", clicked = lambda:PushClear())
 
@@ -190,7 +212,7 @@ class MainWindow(qtw.QWidget):
         box0.addWidget(self.LabelAnswer)
         self.LabelAnswer.setText("0")
         #self.LabelAnswer.setText("Hello Answer")
-        self.LabelAnswer.setStyleSheet("text-align:right;")
+        self.LabelAnswer.setStyleSheet("text-align:left;")
 
         #box1p1.addWidget(self.LabelNumber)
         #self.LabelNumber.setText("Hello Number")
